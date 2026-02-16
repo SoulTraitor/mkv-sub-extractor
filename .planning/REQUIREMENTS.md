@@ -80,37 +80,37 @@ Deferred to future release. Tracked but not in current roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PARS-01 | - | Pending |
-| PARS-02 | - | Pending |
-| PARS-03 | - | Pending |
-| PARS-04 | - | Pending |
-| TRAK-01 | - | Pending |
-| TRAK-02 | - | Pending |
-| TRAK-03 | - | Pending |
-| EXTR-01 | - | Pending |
-| EXTR-02 | - | Pending |
-| EXTR-03 | - | Pending |
-| EXTR-04 | - | Pending |
-| CONV-01 | - | Pending |
-| CONV-02 | - | Pending |
-| CONV-03 | - | Pending |
-| CONV-04 | - | Pending |
-| CLI-01 | - | Pending |
-| CLI-02 | - | Pending |
-| CLI-03 | - | Pending |
-| CLI-04 | - | Pending |
-| CLI-05 | - | Pending |
-| CLI-06 | - | Pending |
-| ERRH-01 | - | Pending |
-| ERRH-02 | - | Pending |
-| ERRH-03 | - | Pending |
-| ERRH-04 | - | Pending |
+| PARS-01 | Phase 1 | Pending |
+| PARS-02 | Phase 1 | Pending |
+| PARS-03 | Phase 1 | Pending |
+| PARS-04 | Phase 1 | Pending |
+| TRAK-01 | Phase 1 | Pending |
+| TRAK-02 | Phase 1 | Pending |
+| TRAK-03 | Phase 1 | Pending |
+| EXTR-01 | Phase 2 | Pending |
+| EXTR-02 | Phase 2 | Pending |
+| EXTR-03 | Phase 2 | Pending |
+| EXTR-04 | Phase 2 | Pending |
+| CONV-01 | Phase 2 | Pending |
+| CONV-02 | Phase 2 | Pending |
+| CONV-03 | Phase 2 | Pending |
+| CONV-04 | Phase 2 | Pending |
+| CLI-01 | Phase 3 | Pending |
+| CLI-02 | Phase 3 | Pending |
+| CLI-03 | Phase 3 | Pending |
+| CLI-04 | Phase 3 | Pending |
+| CLI-05 | Phase 3 | Pending |
+| CLI-06 | Phase 3 | Pending |
+| ERRH-01 | Phase 3 | Pending |
+| ERRH-02 | Phase 3 | Pending |
+| ERRH-03 | Phase 3 | Pending |
+| ERRH-04 | Phase 3 | Pending |
 
 **Coverage:**
 - v1 requirements: 25 total
-- Mapped to phases: 0
-- Unmapped: 25 ⚠️
+- Mapped to phases: 25
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-16*
-*Last updated: 2026-02-16 after initial definition*
+*Last updated: 2026-02-16 after roadmap creation*
