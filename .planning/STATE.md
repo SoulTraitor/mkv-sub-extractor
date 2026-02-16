@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-02-16)
 
 **Core value:** User can quickly and reliably extract subtitles from MKV files and get ASS format output
-**Current focus:** Phase 2 - Subtitle Extraction and ASS Output
+**Current focus:** Phase 3 - CLI Interface and Error Handling
 
 ## Current Position
 
-Phase: 2 of 3 (Subtitle Extraction and ASS Output) -- PHASE COMPLETE
-Plan: 4 of 4 in current phase (all plans complete)
-Status: Phase 2 Complete
-Last activity: 2026-02-16 -- Completed 02-04 extraction pipeline integration (verified with real MKV files)
+Phase: 3 of 3 (CLI Interface and Error Handling) -- NOT STARTED
+Plan: 0 of ? in current phase (plans TBD)
+Status: Ready to plan Phase 3
+Last activity: 2026-02-16 -- Phase 2 verified and complete
 
-Progress: [██████░░░░] 60%
+Progress: [██████████░░░░░] 67%
 
 ## Performance Metrics
 
