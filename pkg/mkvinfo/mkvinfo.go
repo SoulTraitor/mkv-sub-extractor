@@ -2,6 +2,7 @@ package mkvinfo
 
 import (
 	"fmt"
+	"math"
 	"os"
 	"path/filepath"
 	"time"
@@ -34,8 +35,17 @@ func GetMKVInfo(path string) (*MKVInfo, error) {
 		return nil, fmt.Errorf("cannot read file info: %w", err)
 	}
 
-	// Duration is uint64 nanoseconds; 0 means unknown.
-	duration := time.Duration(segInfo.Duration)
+	// Matroska Duration is a float element, but matroska-go reads it via ReadUInt(),
+	// returning the raw IEEE 754 bits as uint64. Reinterpret as float, then scale.
+	// The element may be 4-byte (float32) or 8-byte (float64); uint64 values
+	// fitting in 32 bits are float32 (any real float64 has upper bits set).
+	var durationTicks float64
+	if segInfo.Duration <= math.MaxUint32 {
+		durationTicks = float64(math.Float32frombits(uint32(segInfo.Duration)))
+	} else {
+		durationTicks = math.Float64frombits(segInfo.Duration)
+	}
+	duration := time.Duration(durationTicks * float64(segInfo.TimecodeScale))
 
 	numTracks, err := demuxer.GetNumTracks()
 	if err != nil {
