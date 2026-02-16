@@ -27,11 +27,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Tool correctly lists all subtitle tracks in an MKV file, showing track number, codec type (SRT/SSA/ASS), language, and name
   3. Tool handles large MKV files (1+ GB) without excessive memory usage (streaming/seeking, not buffering)
   4. Non-text subtitle tracks (PGS/VobSub) appear in the listing with a clear indicator that they are image-based and not extractable
-**Plans**: TBD
+**Plans:** 2 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md -- Project setup, domain types, codec classification, language resolution, formatting utilities, and core MKV parsing function
+- [ ] 01-02-PLAN.md -- Display formatting for track listings and file metadata, main.go entry point, human verification with real MKV file
 
 ### Phase 2: Subtitle Extraction and ASS Output
 **Goal**: User can select a subtitle track and get a valid, correctly-timed ASS file as output
@@ -71,6 +71,6 @@ Phases execute in numeric order: 1 -> 2 -> 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. MKV Parsing and Track Discovery | 0/? | Not started | - |
+| 1. MKV Parsing and Track Discovery | 0/2 | Planning complete | - |
 | 2. Subtitle Extraction and ASS Output | 0/? | Not started | - |
 | 3. CLI Interface and Error Handling | 0/? | Not started | - |
