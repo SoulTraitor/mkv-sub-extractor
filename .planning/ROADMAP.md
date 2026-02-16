@@ -12,7 +12,7 @@ Build a pure Go CLI tool that extracts text subtitles from MKV files and outputs
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: MKV Parsing and Track Discovery** - Parse EBML/Matroska containers and list subtitle tracks with metadata
+- [x] **Phase 1: MKV Parsing and Track Discovery** - Parse EBML/Matroska containers and list subtitle tracks with metadata
 - [ ] **Phase 2: Subtitle Extraction and ASS Output** - Extract subtitle block data and produce valid ASS files (passthrough and SRT conversion)
 - [ ] **Phase 3: CLI Interface and Error Handling** - Interactive file/track selection, argument parsing, output control, and robust error messages
 
@@ -30,8 +30,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans:** 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md -- Project setup, domain types, codec classification, language resolution, formatting utilities, and core MKV parsing function
-- [ ] 01-02-PLAN.md -- Display formatting for track listings and file metadata, main.go entry point, human verification with real MKV file
+- [x] 01-01-PLAN.md -- Project setup, domain types, codec classification, language resolution, formatting utilities, and core MKV parsing function
+- [x] 01-02-PLAN.md -- Display formatting for track listings and file metadata, main.go entry point, human verification with real MKV file
 
 ### Phase 2: Subtitle Extraction and ASS Output
 **Goal**: User can select a subtitle track and get a valid, correctly-timed ASS file as output
@@ -71,6 +71,6 @@ Phases execute in numeric order: 1 -> 2 -> 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. MKV Parsing and Track Discovery | 0/2 | Planning complete | - |
+| 1. MKV Parsing and Track Discovery | 2/2 | Complete | 2026-02-16 |
 | 2. Subtitle Extraction and ASS Output | 0/? | Not started | - |
 | 3. CLI Interface and Error Handling | 0/? | Not started | - |
