@@ -1,0 +1,8 @@
+# Compiled binary (root only, not cmd/ subdirectory)
+/mkv-sub-extractor.exe
+/mkv-sub-extractor
+
+# IDE
+.idea/
+.vscode/
+*.swp
