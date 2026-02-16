@@ -10,28 +10,29 @@ See: .planning/PROJECT.md (updated 2026-02-16)
 ## Current Position
 
 Phase: 2 of 3 (Subtitle Extraction and ASS Output)
-Plan: 0 of ? in current phase
-Status: Planned, ready for execution
-Last activity: 2026-02-16 -- Phase 2 planned (4 plans, 3 waves, verification passed)
+Plan: 1 of 4 in current phase
+Status: Executing
+Last activity: 2026-02-16 -- Completed 02-01 core pure functions (TDD, 39 tests)
 
-Progress: [███░░░░░░░] 33%
+Progress: [████░░░░░░] 40%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 10 min
-- Total execution time: 0.33 hours
+- Total plans completed: 3
+- Average duration: 8 min
+- Total execution time: 0.38 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-mkv-parsing | 2 | 20 min | 10 min |
+| 02-subtitle-extraction-and-ass-output | 1 | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 5m, 15m
-- Trend: Stabilizing
+- Last 5 plans: 5m, 15m, 3m
+- Trend: Accelerating (pure function TDD plans are fast)
 
 *Updated after each plan completion*
 
@@ -48,6 +49,10 @@ Recent decisions affecting current work:
 - ~~01-01: SegmentInfo.Duration uint64 cast directly to time.Duration (nanoseconds match)~~ SUPERSEDED by duration fix below
 - 01-02: matroska-go Duration bug — ReadUInt on float element returns raw IEEE 754 bits; must reinterpret via Float32frombits/Float64frombits then multiply by TimecodeScale
 - 01-02: ShouldShowDefault suppresses [default] when all tracks have it
+- 02-01: Integer-only centisecond rounding (ns + 5_000_000) / 10_000_000 avoids float64 drift
+- 02-01: ParseASSBlockData returns (readOrder, layer, remaining, err) for flexible Dialogue construction
+- 02-01: Package-level compiled regexes for SRT tag conversion performance
+- 02-01: 7 named SRT colors supported; unknown colors cause tag stripping (not error)
 
 ### Pending Todos
 
@@ -62,5 +67,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-16
-Stopped at: Phase 2 planned, ready for execution
-Resume file: .planning/phases/02-subtitle-extraction-and-ass-output/02-01-PLAN.md
+Stopped at: Completed 02-01-PLAN.md (core pure functions)
+Resume file: .planning/phases/02-subtitle-extraction-and-ass-output/02-02-PLAN.md
