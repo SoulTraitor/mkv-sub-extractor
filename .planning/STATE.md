@@ -5,14 +5,14 @@
 See: .planning/PROJECT.md (updated 2026-02-16)
 
 **Core value:** User can quickly and reliably extract subtitles from MKV files and get ASS format output
-**Current focus:** Phase 1 complete — ready for Phase 2
+**Current focus:** Phase 2 - Subtitle Extraction and ASS Output
 
 ## Current Position
 
-Phase: 1 of 3 (MKV Parsing and Track Discovery) — COMPLETE
-Plan: 2 of 2 in current phase — COMPLETE
-Status: Phase 1 finished, Phase 2 not yet planned
-Last activity: 2026-02-16 -- Completed Phase 1 (both plans + human verification)
+Phase: 2 of 3 (Subtitle Extraction and ASS Output)
+Plan: 0 of ? in current phase
+Status: Context gathered, ready for planning
+Last activity: 2026-02-16 -- Phase 2 context gathered
 
 Progress: [███░░░░░░░] 33%
 
@@ -62,5 +62,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-16
-Stopped at: Phase 1 complete. Next: /gsd:discuss-phase 2 or /gsd:plan-phase 2
-Resume file: None
+Stopped at: Phase 2 context gathered
+Resume file: .planning/phases/02-subtitle-extraction-and-ass-output/02-CONTEXT.md
