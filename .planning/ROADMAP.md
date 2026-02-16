@@ -43,11 +43,13 @@ Plans:
   3. Subtitle timestamps in the output file are accurate (Cluster Timestamp + Block offset + TimestampScale correctly computed, millisecond-to-centisecond conversion preserves precision)
   4. SRT formatting tags (italic, bold) are correctly mapped to ASS override tags in the converted output
   5. Output ASS files render correctly when loaded in a media player (mpv/VLC)
-**Plans**: TBD
+**Plans:** 4 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
+- [ ] 02-01-PLAN.md -- TDD: SubtitleEvent types, ASS timestamp formatting, ASS block data parsing, SRT HTML tag conversion
+- [ ] 02-02-PLAN.md -- MKV packet extraction, ASS passthrough writer, SSA V4->V4+ header conversion
+- [ ] 02-03-PLAN.md -- SRT-to-ASS writer with default template, output file naming with collision handling
+- [ ] 02-04-PLAN.md -- Integration pipeline API (ExtractTrackToASS), human verification with real MKV files
 
 ### Phase 3: CLI Interface and Error Handling
 **Goal**: User has a polished, self-explanatory command-line tool that works both interactively and via arguments, with clear guidance on errors
@@ -72,5 +74,5 @@ Phases execute in numeric order: 1 -> 2 -> 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. MKV Parsing and Track Discovery | 2/2 | Complete | 2026-02-16 |
-| 2. Subtitle Extraction and ASS Output | 0/? | Not started | - |
+| 2. Subtitle Extraction and ASS Output | 0/4 | Planned | - |
 | 3. CLI Interface and Error Handling | 0/? | Not started | - |
