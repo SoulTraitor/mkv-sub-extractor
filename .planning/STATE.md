@@ -9,30 +9,30 @@ See: .planning/PROJECT.md (updated 2026-02-16)
 
 ## Current Position
 
-Phase: 2 of 3 (Subtitle Extraction and ASS Output)
-Plan: 3 of 4 in current phase
-Status: Executing
-Last activity: 2026-02-16 -- Completed 02-03 SRT-to-ASS conversion and output naming (24 tests)
+Phase: 2 of 3 (Subtitle Extraction and ASS Output) -- PHASE COMPLETE
+Plan: 4 of 4 in current phase (all plans complete)
+Status: Phase 2 Complete
+Last activity: 2026-02-16 -- Completed 02-04 extraction pipeline integration (verified with real MKV files)
 
-Progress: [█████░░░░░] 50%
+Progress: [██████░░░░] 60%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
+- Total plans completed: 6
 - Average duration: 7 min
-- Total execution time: 0.53 hours
+- Total execution time: 0.67 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-mkv-parsing | 2 | 20 min | 10 min |
-| 02-subtitle-extraction-and-ass-output | 3 | 12 min | 4 min |
+| 02-subtitle-extraction-and-ass-output | 4 | 20 min | 5 min |
 
 **Recent Trend:**
-- Last 5 plans: 5m, 15m, 3m, 4m, 5m
-- Trend: Accelerating (extraction and conversion plans are fast)
+- Last 5 plans: 15m, 3m, 4m, 5m, 8m
+- Trend: Consistent (Phase 2 averaging 5 min/plan)
 
 *Updated after each plan completion*
 
@@ -59,6 +59,10 @@ Recent decisions affecting current work:
 - 02-03: Default ASS style: Microsoft YaHei 22pt, 1920x1080 PlayRes, bottom-center, white text with black outline
 - 02-03: Collision resolution chain: base path -> track name -> sequence numbers (.2, .3)
 - 02-03: WriteSRTAsASS copies events slice before sorting (defensive copy pattern)
+- 02-04: ExtractTrackToASS is the single public entry point; extractTrackToASS (internal) accepts shared existingPaths for batch collision tracking
+- 02-04: packetsToEvents splits ASS remaining field into exactly 7 parts (Style through Text) with SplitN
+- 02-04: Partial output files cleaned up on write error (os.Remove)
+- 02-04: ExtractSubtitlePackets warning silently ignored at pipeline level
 
 ### Pending Todos
 
@@ -73,5 +77,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-16
-Stopped at: Completed 02-03-PLAN.md (SRT-to-ASS conversion and output naming)
-Resume file: .planning/phases/02-subtitle-extraction-and-ass-output/02-04-PLAN.md
+Stopped at: Completed 02-04-PLAN.md (extraction pipeline integration -- Phase 2 complete)
+Resume file: Phase 3 planning needed next
