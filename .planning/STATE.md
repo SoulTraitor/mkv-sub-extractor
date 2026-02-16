@@ -10,29 +10,29 @@ See: .planning/PROJECT.md (updated 2026-02-16)
 ## Current Position
 
 Phase: 2 of 3 (Subtitle Extraction and ASS Output)
-Plan: 1 of 4 in current phase
+Plan: 3 of 4 in current phase
 Status: Executing
-Last activity: 2026-02-16 -- Completed 02-01 core pure functions (TDD, 39 tests)
+Last activity: 2026-02-16 -- Completed 02-03 SRT-to-ASS conversion and output naming (24 tests)
 
-Progress: [████░░░░░░] 40%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 8 min
-- Total execution time: 0.38 hours
+- Total plans completed: 4
+- Average duration: 7 min
+- Total execution time: 0.45 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-mkv-parsing | 2 | 20 min | 10 min |
-| 02-subtitle-extraction-and-ass-output | 1 | 3 min | 3 min |
+| 02-subtitle-extraction-and-ass-output | 2 | 7 min | 3.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 5m, 15m, 3m
-- Trend: Accelerating (pure function TDD plans are fast)
+- Last 5 plans: 5m, 15m, 3m, 4m
+- Trend: Accelerating (pure function and conversion plans are fast)
 
 *Updated after each plan completion*
 
@@ -53,6 +53,9 @@ Recent decisions affecting current work:
 - 02-01: ParseASSBlockData returns (readOrder, layer, remaining, err) for flexible Dialogue construction
 - 02-01: Package-level compiled regexes for SRT tag conversion performance
 - 02-01: 7 named SRT colors supported; unknown colors cause tag stripping (not error)
+- 02-03: Default ASS style: Microsoft YaHei 22pt, 1920x1080 PlayRes, bottom-center, white text with black outline
+- 02-03: Collision resolution chain: base path -> track name -> sequence numbers (.2, .3)
+- 02-03: WriteSRTAsASS copies events slice before sorting (defensive copy pattern)
 
 ### Pending Todos
 
@@ -67,5 +70,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-16
-Stopped at: Completed 02-01-PLAN.md (core pure functions)
-Resume file: .planning/phases/02-subtitle-extraction-and-ass-output/02-02-PLAN.md
+Stopped at: Completed 02-03-PLAN.md (SRT-to-ASS conversion and output naming)
+Resume file: .planning/phases/02-subtitle-extraction-and-ass-output/02-04-PLAN.md
