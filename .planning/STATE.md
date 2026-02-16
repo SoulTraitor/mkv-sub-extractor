@@ -19,20 +19,20 @@ Progress: [█████░░░░░] 50%
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
+- Total plans completed: 5
 - Average duration: 7 min
-- Total execution time: 0.45 hours
+- Total execution time: 0.53 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-mkv-parsing | 2 | 20 min | 10 min |
-| 02-subtitle-extraction-and-ass-output | 2 | 7 min | 3.5 min |
+| 02-subtitle-extraction-and-ass-output | 3 | 12 min | 4 min |
 
 **Recent Trend:**
-- Last 5 plans: 5m, 15m, 3m, 4m
-- Trend: Accelerating (pure function and conversion plans are fast)
+- Last 5 plans: 5m, 15m, 3m, 4m, 5m
+- Trend: Accelerating (extraction and conversion plans are fast)
 
 *Updated after each plan completion*
 
@@ -53,6 +53,9 @@ Recent decisions affecting current work:
 - 02-01: ParseASSBlockData returns (readOrder, layer, remaining, err) for flexible Dialogue construction
 - 02-01: Package-level compiled regexes for SRT tag conversion performance
 - 02-01: 7 named SRT colors supported; unknown colors cause tag stripping (not error)
+- 02-02: ApplyGapFill exported separately for unit testability; EndTime <= StartTime treated as missing
+- 02-02: WriteASSPassthrough normalizes all line endings to CRLF; sorts by StartTime then ReadOrder
+- 02-02: ConvertSSAHeaderToASS is idempotent (returns unchanged for V4+ input)
 - 02-03: Default ASS style: Microsoft YaHei 22pt, 1920x1080 PlayRes, bottom-center, white text with black outline
 - 02-03: Collision resolution chain: base path -> track name -> sequence numbers (.2, .3)
 - 02-03: WriteSRTAsASS copies events slice before sorting (defensive copy pattern)
