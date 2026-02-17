@@ -60,11 +60,11 @@ Plans:
   2. Running the tool with a file path argument and --track flag extracts the specified track non-interactively (scriptable mode)
   3. Output files are saved to the MKV's directory by default with auto-generated names (e.g., video.en.ass), and --output overrides the directory
   4. Passing a non-MKV file, a nonexistent path, a file with no subtitles, or selecting an image subtitle track each produces a distinct, human-readable error message
-**Plans**: TBD
+**Plans:** 2 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [ ] 03-01-PLAN.md -- CLI foundation: structured error types with rustc-style formatting, flag parsing with pflag, interactive file picker and track multi-selector with huh
+- [ ] 03-02-PLAN.md -- Orchestration layer: two-mode dispatch, continue-on-failure extraction, progress bar, completion summary, main entry point, human verification
 
 ## Progress
 
