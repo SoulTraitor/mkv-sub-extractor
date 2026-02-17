@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-16)
 
 **Core value:** User can quickly and reliably extract subtitles from MKV files and get ASS format output
-**Current focus:** Phase 3 - CLI Interface and Error Handling
+**Current focus:** All phases complete
 
 ## Current Position
 
-Phase: 3 of 3 (CLI Interface and Error Handling) -- IN PROGRESS
-Plan: 1 of 2 in current phase (plan 01 complete)
-Status: Executing Phase 3
-Last activity: 2026-02-17 -- Plan 03-01 complete
+Phase: 3 of 3 (CLI Interface and Error Handling) -- COMPLETE
+Plan: 2 of 2 in current phase (all complete)
+Status: All 3 phases complete
+Last activity: 2026-02-17 -- Phase 3 human testing passed, bug fixes committed
 
-Progress: [████████████░░░] 83%
+Progress: [████████████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
+- Total plans completed: 8
 - Average duration: 6 min
-- Total execution time: 0.73 hours
+- Total execution time: ~0.8 hours
 
 **By Phase:**
 
@@ -29,12 +29,7 @@ Progress: [████████████░░░] 83%
 |-------|-------|-------|----------|
 | 01-mkv-parsing | 2 | 20 min | 10 min |
 | 02-subtitle-extraction-and-ass-output | 4 | 20 min | 5 min |
-
-| 03-cli-interface-and-error-handling | 1 | 4 min | 4 min |
-
-**Recent Trend:**
-- Last 5 plans: 3m, 4m, 5m, 8m, 4m
-- Trend: Consistent (averaging 5 min/plan)
+| 03-cli-interface-and-error-handling | 2 | 8 min | 4 min |
 
 *Updated after each plan completion*
 
@@ -58,7 +53,7 @@ Recent decisions affecting current work:
 - 02-02: ApplyGapFill exported separately for unit testability; EndTime <= StartTime treated as missing
 - 02-02: WriteASSPassthrough normalizes all line endings to CRLF; sorts by StartTime then ReadOrder
 - 02-02: ConvertSSAHeaderToASS is idempotent (returns unchanged for V4+ input)
-- 02-03: Default ASS style: Microsoft YaHei 22pt, 1920x1080 PlayRes, bottom-center, white text with black outline
+- 02-03: Default ASS style: Microsoft YaHei 58pt, 1920x1080 PlayRes, bottom-center, white text with black outline
 - 02-03: Collision resolution chain: base path -> track name -> sequence numbers (.2, .3)
 - 02-03: WriteSRTAsASS copies events slice before sorting (defensive copy pattern)
 - 02-04: ExtractTrackToASS is the single public entry point; extractTrackToASS (internal) accepts shared existingPaths for batch collision tracking
@@ -70,6 +65,11 @@ Recent decisions affecting current work:
 - 03-01: CLIError.Error() returns Title only; Format() gives full rustc-style output
 - 03-01: MKV file deduplication on case-insensitive FS via ToLower map key
 - 03-01: Image tracks displayed as faint lipgloss above multi-select, not inline
+- 03-02: ExtractTrackToASSShared shares existingPaths across batch to prevent same-language collision
+- 03-02: Empty Layer/ReadOrder in ASS block data defaults to 0 (not error)
+- 03-02: Always run ConvertSSAHeaderToASS regardless of codec ID (handles ASS tracks with V4 headers)
+- 03-02: SRT default font size 58pt at 1080p (matches player default SRT rendering scale)
+- 03-02: Esc key added as quit binding; validation moved to post-submit
 
 ### Pending Todos
 
@@ -79,10 +79,10 @@ None.
 
 - ~~Research notes matroska-go has 0 known importers; fallback to go-mkvparse if issues arise during Phase 1~~ RESOLVED: matroska-go v1.2.4 working correctly with Go 1.25.6, API matches documentation
 - ~~EBML Element IDs from research training data should be verified against current Matroska spec early in Phase 1~~ RESOLVED: TypeSubtitle=17, TrackInfo fields, SegmentInfo.Duration all verified against actual library source
-- **matroska-go Duration bug**: Library reads Matroska float Duration element with ReadUInt(), returning IEEE 754 bits. Workaround applied in mkvinfo.go. May affect other float elements in Phase 2 (e.g., packet timestamps — verify during extraction).
+- ~~**matroska-go Duration bug**: Library reads Matroska float Duration element with ReadUInt(), returning IEEE 754 bits. Workaround applied in mkvinfo.go.~~ RESOLVED: Workaround applied and verified across all phases
 
 ## Session Continuity
 
 Last session: 2026-02-17
-Stopped at: Completed 03-01-PLAN.md
-Resume file: .planning/phases/03-cli-interface-and-error-handling/03-02-PLAN.md
+Stopped at: Project complete — all 3 phases done
+Resume file: N/A

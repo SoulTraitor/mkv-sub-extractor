@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: MKV Parsing and Track Discovery** - Parse EBML/Matroska containers and list subtitle tracks with metadata
 - [x] **Phase 2: Subtitle Extraction and ASS Output** - Extract subtitle block data and produce valid ASS files (passthrough and SRT conversion) (completed 2026-02-16)
-- [ ] **Phase 3: CLI Interface and Error Handling** - Interactive file/track selection, argument parsing, output control, and robust error messages
+- [x] **Phase 3: CLI Interface and Error Handling** - Interactive file/track selection, argument parsing, output control, and robust error messages (completed 2026-02-17)
 
 ## Phase Details
 
@@ -63,8 +63,8 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md -- CLI foundation: structured error types with rustc-style formatting, flag parsing with pflag, interactive file picker and track multi-selector with huh
-- [ ] 03-02-PLAN.md -- Orchestration layer: two-mode dispatch, continue-on-failure extraction, progress bar, completion summary, main entry point, human verification
+- [x] 03-01-PLAN.md -- CLI foundation: structured error types with rustc-style formatting, flag parsing with pflag, interactive file picker and track multi-selector with huh
+- [x] 03-02-PLAN.md -- Orchestration layer: two-mode dispatch, continue-on-failure extraction, progress bar, completion summary, main entry point, human verification
 
 ## Progress
 
@@ -75,4 +75,4 @@ Phases execute in numeric order: 1 -> 2 -> 3
 |-------|----------------|--------|-----------|
 | 1. MKV Parsing and Track Discovery | 2/2 | Complete | 2026-02-16 |
 | 2. Subtitle Extraction and ASS Output | 4/4 | Complete | 2026-02-16 |
-| 3. CLI Interface and Error Handling | 0/? | Not started | - |
+| 3. CLI Interface and Error Handling | 2/2 | Complete | 2026-02-17 |
