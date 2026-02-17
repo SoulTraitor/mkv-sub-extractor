@@ -13,9 +13,9 @@ import (
 // subtitle events. The CodecPrivate bytes are written as the ASS header, with the
 // [Events] section and Dialogue lines appended.
 //
-// For ASS tracks (codecID "S_TEXT/ASS"), the CodecPrivate is used verbatim.
-// For SSA tracks (codecID "S_TEXT/SSA"), the header is converted from V4 to V4+
-// using ConvertSSAHeaderToASS before writing.
+// If the CodecPrivate contains [V4 Styles] (SSA format), the header is automatically
+// converted to [V4+ Styles] (ASS format) using ConvertSSAHeaderToASS. This handles
+// both S_TEXT/SSA tracks and S_TEXT/ASS tracks with legacy V4 headers.
 //
 // The function handles three CodecPrivate scenarios:
 //   - No [Events] section: appends [Events] + default Format line
@@ -27,10 +27,11 @@ import (
 func WriteASSPassthrough(w io.Writer, codecPrivate []byte, codecID string, events []subtitle.SubtitleEvent) error {
 	header := string(codecPrivate)
 
-	// Handle SSA conversion
-	if codecID == "S_TEXT/SSA" {
-		header = ConvertSSAHeaderToASS(header)
-	}
+	// Always attempt SSA→ASS header conversion. Some MKV files have CodecID
+	// "S_TEXT/ASS" but CodecPrivate with [V4 Styles] (SSA format). The conversion
+	// function already guards on [V4 Styles] presence, so calling it unconditionally
+	// is safe — it's a no-op for proper V4+ headers.
+	header = ConvertSSAHeaderToASS(header)
 
 	// Normalize line endings: convert any existing CRLF to LF first for consistent processing,
 	// then we'll write with CRLF

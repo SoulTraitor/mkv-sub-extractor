@@ -32,6 +32,13 @@ func ExtractTrackToASS(mkvPath string, track mkvinfo.SubtitleTrack, outputDir st
 	return extractTrackToASS(mkvPath, track, outputDir, existingPaths)
 }
 
+// ExtractTrackToASSShared is like ExtractTrackToASS but accepts a shared existingPaths
+// map for collision-aware output naming across multiple tracks in the same batch.
+// Callers extracting multiple tracks should create one map and pass it to all calls.
+func ExtractTrackToASSShared(mkvPath string, track mkvinfo.SubtitleTrack, outputDir string, existingPaths map[string]bool) (string, error) {
+	return extractTrackToASS(mkvPath, track, outputDir, existingPaths)
+}
+
 // ExtractTracksToASS extracts multiple subtitle tracks from an MKV file, writing
 // each as a separate ASS output file. The existingPaths map is shared across all
 // tracks to handle naming collisions correctly.

@@ -26,14 +26,18 @@ func ParseASSBlockData(data []byte) (readOrder int, layer int, remaining string,
 		return 0, 0, "", fmt.Errorf("expected 9 fields, got %d", len(parts))
 	}
 
-	readOrder, err = strconv.Atoi(strings.TrimSpace(parts[0]))
-	if err != nil {
-		return 0, 0, "", fmt.Errorf("invalid ReadOrder %q: %w", parts[0], err)
+	if v := strings.TrimSpace(parts[0]); v != "" {
+		readOrder, err = strconv.Atoi(v)
+		if err != nil {
+			return 0, 0, "", fmt.Errorf("invalid ReadOrder %q: %w", parts[0], err)
+		}
 	}
 
-	layer, err = strconv.Atoi(strings.TrimSpace(parts[1]))
-	if err != nil {
-		return 0, 0, "", fmt.Errorf("invalid Layer %q: %w", parts[1], err)
+	if v := strings.TrimSpace(parts[1]); v != "" {
+		layer, err = strconv.Atoi(v)
+		if err != nil {
+			return 0, 0, "", fmt.Errorf("invalid Layer %q: %w", parts[1], err)
+		}
 	}
 
 	// Rejoin fields 2-8 (Style through Text) for the Dialogue line

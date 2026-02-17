@@ -207,6 +207,49 @@ Style: Default,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,-1,0,1,2,1,2
 	}
 }
 
+func TestWriteASSPassthrough_ASSCodecWithV4StylesConverts(t *testing.T) {
+	// Some MKV files have CodecID "S_TEXT/ASS" but CodecPrivate with [V4 Styles].
+	// The writer must convert these to V4+ regardless of codec ID.
+	ssaHeader := `[Script Info]
+Title: Test
+ScriptType: v4.00
+
+[V4 Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, TertiaryColour, BackColour, Bold, Italic, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, AlphaLevel, Encoding
+Style: Font1OutlineShadow,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,-1,0,1,2,1,2,10,10,10,0,1
+`
+
+	var buf bytes.Buffer
+	events := []subtitle.SubtitleEvent{{
+		Start: 1_000_000_000, End: 2_000_000_000,
+		Style: "Font1OutlineShadow", Text: "Hello",
+		MarginL: "0", MarginR: "0", MarginV: "0",
+	}}
+
+	err := WriteASSPassthrough(&buf, []byte(ssaHeader), "S_TEXT/ASS", events)
+	if err != nil {
+		t.Fatalf("WriteASSPassthrough returned error: %v", err)
+	}
+
+	output := buf.String()
+
+	// Should have V4+ Styles (converted from V4 despite ASS codec ID)
+	if !strings.Contains(output, "[V4+ Styles]") {
+		t.Error("V4 Styles not converted to V4+ for S_TEXT/ASS codec")
+	}
+	if strings.Contains(output, "[V4 Styles]") {
+		t.Error("V4 Styles still present -- conversion not applied for S_TEXT/ASS codec")
+	}
+
+	// Style name should be preserved in both header and dialogue
+	if !strings.Contains(output, "Style: Font1OutlineShadow,") {
+		t.Error("Style definition not preserved after conversion")
+	}
+	if !strings.Contains(output, "Dialogue: 0,0:00:01.00,0:00:02.00,Font1OutlineShadow,") {
+		t.Error("Dialogue line missing or style name corrupted")
+	}
+}
+
 func TestWriteASSPassthrough_ASSCodecPreservesVerbatim(t *testing.T) {
 	var buf bytes.Buffer
 	events := makeEvents(1_000_000_000)

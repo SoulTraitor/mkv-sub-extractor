@@ -6,11 +6,24 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/charmbracelet/bubbles/key"
 	"github.com/charmbracelet/huh"
 	"github.com/charmbracelet/lipgloss"
 
 	"mkv-sub-extractor/pkg/mkvinfo"
 )
+
+// quitKeyMap returns a KeyMap with Esc added as an alternative quit binding
+// alongside Ctrl+C, so users can exit interactive forms without killing the process.
+// The help text ensures "esc" appears in the bottom key hints bar.
+func quitKeyMap() *huh.KeyMap {
+	km := huh.NewDefaultKeyMap()
+	km.Quit = key.NewBinding(
+		key.WithKeys("ctrl+c", "esc"),
+		key.WithHelp("esc", "cancel"),
+	)
+	return km
+}
 
 // faintStyle is used to display non-extractable (image-based) tracks
 // as grayed-out context above the track multi-selector.
@@ -61,10 +74,11 @@ func PickMKVFile() (string, error) {
 		huh.NewGroup(
 			huh.NewSelect[string]().
 				Title("Select an MKV file").
+				Description("Esc cancel").
 				Options(options...).
 				Value(&selected),
 		),
-	)
+	).WithKeyMap(quitKeyMap())
 
 	if err := form.Run(); err != nil {
 		return "", fmt.Errorf("file picker: %w", err)
@@ -123,19 +137,20 @@ func SelectTracks(tracks []mkvinfo.SubtitleTrack) ([]mkvinfo.SubtitleTrack, erro
 		huh.NewGroup(
 			huh.NewMultiSelect[int]().
 				Title("Select subtitle tracks to extract").
+				Description("Space/x toggle · Esc cancel").
 				Options(options...).
-				Value(&selectedIndices).
-				Validate(func(indices []int) error {
-					if len(indices) == 0 {
-						return fmt.Errorf("at least one track must be selected")
-					}
-					return nil
-				}),
+				Value(&selectedIndices),
 		),
-	)
+	).WithKeyMap(quitKeyMap())
 
 	if err := form.Run(); err != nil {
 		return nil, fmt.Errorf("track selector: %w", err)
+	}
+
+	// Reject empty selection (checked after submit instead of via Validate
+	// to avoid showing an error message on initial render).
+	if len(selectedIndices) == 0 {
+		return nil, fmt.Errorf("track selector: no tracks selected")
 	}
 
 	// Map selected indices back to SubtitleTrack objects.
