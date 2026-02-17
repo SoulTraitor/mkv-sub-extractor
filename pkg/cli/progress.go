@@ -35,7 +35,6 @@ func ExtractWithProgress(mkvPath string, tracks []mkvinfo.SubtitleTrack, outputD
 			progressbar.OptionShowCount(),
 			progressbar.OptionSetPredictTime(false),
 			progressbar.OptionSetItsString("track"),
-			progressbar.OptionClearOnFinish(),
 		)
 	}
 
