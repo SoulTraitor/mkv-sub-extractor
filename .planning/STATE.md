@@ -9,19 +9,19 @@ See: .planning/PROJECT.md (updated 2026-02-16)
 
 ## Current Position
 
-Phase: 3 of 3 (CLI Interface and Error Handling) -- NOT STARTED
-Plan: 0 of ? in current phase (plans TBD)
-Status: Ready to plan Phase 3
-Last activity: 2026-02-16 -- Phase 2 verified and complete
+Phase: 3 of 3 (CLI Interface and Error Handling) -- IN PROGRESS
+Plan: 1 of 2 in current phase (plan 01 complete)
+Status: Executing Phase 3
+Last activity: 2026-02-17 -- Plan 03-01 complete
 
-Progress: [██████████░░░░░] 67%
+Progress: [████████████░░░] 83%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
-- Average duration: 7 min
-- Total execution time: 0.67 hours
+- Total plans completed: 7
+- Average duration: 6 min
+- Total execution time: 0.73 hours
 
 **By Phase:**
 
@@ -30,9 +30,11 @@ Progress: [██████████░░░░░] 67%
 | 01-mkv-parsing | 2 | 20 min | 10 min |
 | 02-subtitle-extraction-and-ass-output | 4 | 20 min | 5 min |
 
+| 03-cli-interface-and-error-handling | 1 | 4 min | 4 min |
+
 **Recent Trend:**
-- Last 5 plans: 15m, 3m, 4m, 5m, 8m
-- Trend: Consistent (Phase 2 averaging 5 min/plan)
+- Last 5 plans: 3m, 4m, 5m, 8m, 4m
+- Trend: Consistent (averaging 5 min/plan)
 
 *Updated after each plan completion*
 
@@ -63,6 +65,11 @@ Recent decisions affecting current work:
 - 02-04: packetsToEvents splits ASS remaining field into exactly 7 parts (Style through Text) with SplitN
 - 02-04: Partial output files cleaned up on write error (os.Remove)
 - 02-04: ExtractSubtitlePackets warning silently ignored at pipeline level
+- 03-01: Exit code scheme: 1=general, 2=file, 3=track, 4=extraction
+- 03-01: Error codes use category prefixes (E0x=file, E1x=track, E2x=extraction)
+- 03-01: CLIError.Error() returns Title only; Format() gives full rustc-style output
+- 03-01: MKV file deduplication on case-insensitive FS via ToLower map key
+- 03-01: Image tracks displayed as faint lipgloss above multi-select, not inline
 
 ### Pending Todos
 
@@ -77,5 +84,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-17
-Stopped at: Phase 3 context gathered
-Resume file: .planning/phases/03-cli-interface-and-error-handling/03-CONTEXT.md
+Stopped at: Completed 03-01-PLAN.md
+Resume file: .planning/phases/03-cli-interface-and-error-handling/03-02-PLAN.md
